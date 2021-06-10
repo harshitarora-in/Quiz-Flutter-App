@@ -63,7 +63,7 @@ class _QuizPageState extends State<QuizPage> {
       } else if (correctAnswer.toString() == userAnswer) {
         scoreIcons
             .add(Icon(CupertinoIcons.check_mark_circled, color: Colors.green));
-      } else {
+      } else if (correctAnswer.toString() != userAnswer) {
         scoreIcons.add(Icon(CupertinoIcons.xmark_circle, color: Colors.red));
       }
       quizLib.nextQuestion();
@@ -115,7 +115,13 @@ class _QuizPageState extends State<QuizPage> {
           ),
         ),
         Row(
-          children: scoreIcons,
+          children: [
+            Text('SCORE:'),
+            SizedBox(width: 15.0),
+            Row(
+              children: scoreIcons,
+            )
+          ],
         ),
       ],
     );
